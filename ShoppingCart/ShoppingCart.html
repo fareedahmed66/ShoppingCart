@@ -53,7 +53,7 @@
 		<p>Your Cart</p>
 		<ul id="show-cart">
 		</ul>
-		<button id="clear-cart">Clear Cart</button><button onclick="creditLine()">Check Out</button>
+		<button id="clear-cart">Clear Cart</button><button onclick="creditLine()">Check Out</button><button onclick="giveMeATicket()">Print Ticket</button>
 		<div>Total Cart: $<span id="total-cart"></span> </div>
 	</div>
 
@@ -206,7 +206,14 @@
  		else {
  		alert("A cash payment is required.");
 		}
-		}
+		};
+
+	var giveMeATicket = function(){
+
+  	var result = "You total is " + totalCart() + " with tax.\n";
+    result +="Payment cash or credit.";
+    alert(result);
+  }
 
 </script>
 
