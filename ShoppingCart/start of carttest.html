@@ -52,10 +52,9 @@
 	<div>
 		<p>Your Cart</p>
 		<ul id="show-cart">
-			<li>***Add Items***</li>
 		</ul>
 		<button id="clear-cart">Clear Cart</button><button onclick="creditLine()">Check Out</button>
-		<div>Total Cart:$ <span id="total-cart"></span> </div>
+		<div>Total Cart: $<span id="total-cart"></span> </div>
 	</div>
 
 
@@ -276,8 +275,7 @@
 		console.log(array);
 
 		function creditLine() {
-		var CreditLine = 100;
-		if (totalCart >= 100) {
+		if (totalCart() >= 100) {
  		alert("A credit line can be set up.");
 		}
  		else {
