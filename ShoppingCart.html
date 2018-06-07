@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Shopping Cart</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="utf-8"/>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-	<h1 align="center"><u>Shopping Cart</u></h1>
-	<h2 align="center">By: <i>Fareed, Quez, Albert</i></h2>
+	
+	<h1 align="center">Shopping Cart</h1>
+	<h2 align="center">By: Fareed, Quez, Albert</h2>
 <table border="1px" align="center">
 	<div>
 		<tr>
@@ -47,20 +49,21 @@
 			<br>
 		</tr>
 	</div>
-	</table>
-
+	
+	<tr>
+		<td>
 	<div>
-		<p>Your Cart</p>
+		<h3>Your Cart</h3>
 		<ul id="show-cart">
 		</ul>
 		<button id="clear-cart">Clear Cart</button><button onclick="creditLine()">Check Out</button><button onclick="giveMeATicket()">Print Ticket</button>
-		<div>Total Cart: $<span id="total-cart"></span> </div>
+		<div>Total Cart: $<span id="total-cart"></span> +TAX</div>
 	</div>
-
-
+	</td>
+	</tr>
+</table>
 	<script>
-
-
+		
 		$(".add-to-cart").click(function(event){
 			event.preventDefault();
 			var name = $(this).attr("data-name");
@@ -79,8 +82,7 @@
 			var cartArray = listCart();
 			var output = "";
 			for (var i in cartArray) {
-				output += "<li>"+cartArray[i].name+" "+cartArray[i].count+" x "+cartArray[i].price+" = "+cartArray[i].total+
-					"<button class='delete-item' data-name='"+cartArray[i].name+"'>X</button>"
+				output += "<li>"+cartArray[i].name+" "+cartArray[i].count+" x "+cartArray[i].price+" = "+cartArray[i].total+"<button class='delete-item' data-name='"+cartArray[i].name+"'>X</button>"
 				+"</li>";
 			}
 			$("#show-cart").html(output);
@@ -91,8 +93,8 @@
 			removeItemFromCart(name);
 			displayCart();
 		});
-		// *************************************************
-		// Shopping cart functions
+
+		//-------------------------------------------------------FUNCTIONS--------------------------------------------------------------------------------
 
 		var cart = [];
 
@@ -207,15 +209,24 @@
  		alert("A cash payment is required.");
 		}
 		};
+function withTax(){
+	var totalCost = 0;
+	for (var i in cart) {
+		totalCost += cart[i].price * cart[i].count * 0.075 + totalCart();
+	}
+ 	return totalCost.toFixed(2);
 
-	var giveMeATicket = function(){
+ };
 
-  	var result = "You total is " + totalCart() + " with tax.\n";
+
+  var giveMeATicket = function(){
+
+  	var result = "You total is " + withTax() + " with tax.\n";
     result +="Payment cash or credit.";
     alert(result);
-  }
+  };
+
 
 </script>
-
 </body>
 </html>
