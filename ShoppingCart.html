@@ -133,34 +133,11 @@
 
 		
 
-		function removeItemFromCartAll(name) { // removes all item name
-			for (var i in cart) {
-				if (cart[i].name === name) {
-					cart.splice(i,1);
-					break;
-				}
-			}
-			saveCart();
-		}
-
-
 		function clearCart() {
 			cart = [];
 			saveCart();
 		}
 
-
-
-		function countCart() { //-> return total count
-			var totalCount = 0;
-			for (var i in cart) {
-				totalCount += cart[i].count;
-			}
-
-			return totalCount;
-		} 
-
-		console.log( countCart( ));
 
 		function totalCart() { //-> return total cost
 			var totalCost = 0;
@@ -209,6 +186,7 @@
  		alert("A cash payment is required.");
 		}
 		};
+
 function withTax(){
 	var totalCost = 0;
 	for (var i in cart) {
@@ -221,7 +199,7 @@ function withTax(){
 
   var giveMeATicket = function(){
 
-  	var result = "You total is " + withTax() + " with tax.\n";
+  	var result = "You total is $" + withTax() + " with tax.\n";
     result +="Payment cash or credit.";
     alert(result);
   };
